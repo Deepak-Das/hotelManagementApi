@@ -10,10 +10,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserAlreadyExistException.class)
-    public ResponseEntity<ApiResponse> responseNotFoundException(UserAlreadyExistException ex){
+    public ResponseEntity<ApiResponse> AlreadyExistException(UserAlreadyExistException ex){
         ApiResponse apiResponse=new ApiResponse();
         apiResponse.setMessage("User already register");
         apiResponse.setError_status("Email exists");
         return new  ResponseEntity<>(apiResponse, HttpStatus.FOUND);
+    }
+    @ExceptionHandler(UserNotExistException.class)
+    public ResponseEntity<ApiResponse> responseNotFoundException(UserNotExistException ex){
+        ApiResponse apiResponse=new ApiResponse();
+        apiResponse.setMessage("User Not register");
+        apiResponse.setError_status("Email Not exists");
+        return new  ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
     }
 }

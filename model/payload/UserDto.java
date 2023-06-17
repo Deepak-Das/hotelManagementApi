@@ -20,6 +20,7 @@ public class UserDto {
     @NotEmpty
     private String password;
 
+    @NotEmpty
     @Enumerated(value = EnumType.STRING)
     private Role role;
 }

@@ -8,10 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,8 +24,13 @@ public class AuthenticationController {
 
     }
     @PostMapping("/authentication")
-    public ResponseEntity<AuthResponse> register( @RequestBody AuthRequest authRequest){
+    public ResponseEntity<AuthResponse> login( @RequestBody AuthRequest authRequest){
         return ResponseEntity.ok(authenticationService.authentication(authRequest));
+
+    }
+    @GetMapping("/test")
+    public ResponseEntity<String> register(){
+        return ResponseEntity.ok("test in auth");
 
     }
 }
