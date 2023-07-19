@@ -3,8 +3,13 @@ package com.example.hotelmanagementapi.exception;
 import com.example.hotelmanagementapi.model.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -23,4 +28,24 @@ public class GlobalExceptionHandler {
         apiResponse.setError_status("Email Not exists");
         return new  ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(EndPointNotExistException.class)
+    public ResponseEntity<ApiResponse> endPointNotExistException(EndPointNotExistException ex){
+        ApiResponse apiResponse=new ApiResponse();
+        apiResponse.setMessage("Not have any such endpoint");
+        apiResponse.setError_status("Not Found");
+        return new  ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
+    }
+
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String,String>> methodArgumentNotValidException(MethodArgumentNotValidException ex){
+        Map<String,String> apiResponse = new HashMap<>();
+        ex.getAllErrors().stream().forEach(error ->
+                apiResponse.put(((FieldError) error).getField(), error.getDefaultMessage())
+        );
+
+        return new  ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
+    }
+
+
 }

@@ -8,15 +8,22 @@ import com.example.hotelmanagementapi.model.payload.AuthResponse;
 import com.example.hotelmanagementapi.model.payload.UserDto;
 import com.example.hotelmanagementapi.repository.UserRepository;
 import com.example.hotelmanagementapi.security.JwtService;
+import com.example.hotelmanagementapi.service.serviceImp.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 @Service
 @RequiredArgsConstructor
-public class AuthenticationService {
+public class AuthenticationServiceImp implements AuthenticationService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -35,6 +42,10 @@ public class AuthenticationService {
                     .lastName(userDto.getLastName())
                     .email(userDto.getEmail())
                     .role(userDto.getRole())
+                    .adharcard(null)
+                    .hQualification(null)
+//                    .doj(LocalDateTime.now())
+                    .doj(Timestamp.from(Instant.now()))
                     .password(passwordEncoder.encode(userDto.getPassword()))
                     .build();
             userRepository.save(user);

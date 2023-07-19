@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +26,7 @@ public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -36,6 +38,19 @@ public class UserEntity implements UserDetails {
     @Column(nullable = true)
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    private Long brandId;
+
+
+    @Column(nullable = true)
+    private Long adharcard;
+
+    @Column(nullable = false)
+    private Timestamp doj;
+
+    @Column(nullable = true)
+    private String hQualification;
+
 
 
     @Override

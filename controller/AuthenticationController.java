@@ -3,10 +3,9 @@ package com.example.hotelmanagementapi.controller;
 import com.example.hotelmanagementapi.model.AuthRequest;
 import com.example.hotelmanagementapi.model.payload.AuthResponse;
 import com.example.hotelmanagementapi.model.payload.UserDto;
-import com.example.hotelmanagementapi.service.AuthenticationService;
+import com.example.hotelmanagementapi.service.serviceImp.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +18,7 @@ public class AuthenticationController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register( @RequestBody UserDto userDto){
+    public ResponseEntity<AuthResponse> register(@RequestBody @Valid UserDto userDto){
         return ResponseEntity.ok(authenticationService.register(userDto));
 
     }
