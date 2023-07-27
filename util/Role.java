@@ -2,7 +2,7 @@ package com.example.hotelmanagementapi.util;
 
 public enum  Role {
     ADMIN,
-    CUSTOMER,
+    Guest,
     OWNER,
     RECEIPTIONIST
 }

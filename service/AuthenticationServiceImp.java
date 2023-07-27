@@ -61,7 +61,6 @@ public class AuthenticationServiceImp implements AuthenticationService {
 
 
     public AuthResponse authentication(AuthRequest authRequest) {
-        //Todo change this to user not found
         var user = userRepository.findByEmail(authRequest.getEmail()).orElseThrow(UserNotExistException::new);
 
         authenticationManager.authenticate(

@@ -20,7 +20,7 @@ import java.util.Objects;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity()
+@Entity
 @Table(name = "users")
 public class UserEntity implements UserDetails {
 
@@ -35,9 +35,9 @@ public class UserEntity implements UserDetails {
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = true)
+    @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
-    private Role role;
+    private Role role;//todo:need to change into list type
 
     private Long brandId;
 
