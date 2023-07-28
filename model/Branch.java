@@ -15,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BranchDetail {
+public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long branchId;
@@ -28,6 +28,7 @@ public class BranchDetail {
     @ElementCollection
     private Set<HotelType> type;
     private String address;
+
     @Column(nullable = false)
     private Timestamp checkIn;
     @Column(nullable = false)
@@ -38,15 +39,17 @@ public class BranchDetail {
     @ElementCollection
     private Set<String> images;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "reservation_id")
-    private Reservation reservation;
 
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
-    @ToString.Exclude
+
+
+//    @Getter(AccessLevel.NONE)
+//    @Setter(AccessLevel.NONE)
+//    @ToString.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hotel_detail_id")
-    private HotelDetail hotelDetail;
+    private Hotel hotelDetail;
+
+    @OneToMany(mappedBy = "branchDetail", orphanRemoval = true)
+    private Set<Reservation> reservations = new LinkedHashSet<>();
 
 }

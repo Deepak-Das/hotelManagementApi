@@ -9,7 +9,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class HotelDetailDto {
+public class HotelDto {
 
         private Long hotelId;
         private String name;

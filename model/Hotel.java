@@ -3,7 +3,6 @@ package com.example.hotelmanagementapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Builder
@@ -13,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class HotelDetail {
+public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long hotelId;

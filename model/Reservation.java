@@ -42,12 +42,7 @@ public class Reservation {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
-    @ToString.Exclude
-    @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
-    @JoinColumn(name = "branch_id")
-    private BranchDetail branchDetail;
+
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -64,5 +59,12 @@ public class Reservation {
             joinColumns = @JoinColumn(name = "reservationId"),
             inverseJoinColumns = @JoinColumn(name = "roomId"))
     private Set<Room> rooms = new LinkedHashSet<>();
+
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branchDetail;
 
 }

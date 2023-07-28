@@ -52,7 +52,7 @@ public class User implements UserDetails {
     @ToString.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "branch_id")
-    private BranchDetail branchDetail;
+    private Branch branchDetail;
 
     @Override
     public boolean equals(Object o) {
