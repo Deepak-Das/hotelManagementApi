@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Builder
@@ -14,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class HotelBranchDetail {
+public class BranchDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long branchId;
@@ -31,10 +32,21 @@ public class HotelBranchDetail {
     private Timestamp checkIn;
     @Column(nullable = false)
     private Timestamp checkOut;
+
     private Long contact;
 
     @ElementCollection
     private Set<String> images;
 
-    //Todo:mapping with hotel branch m-o
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
+
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @ToString.Exclude
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hotel_detail_id")
+    private HotelDetail hotelDetail;
+
 }

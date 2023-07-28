@@ -3,7 +3,7 @@ package com.example.hotelmanagementapi.service;
 import com.example.hotelmanagementapi.exception.UserAlreadyExistException;
 import com.example.hotelmanagementapi.exception.UserNotExistException;
 import com.example.hotelmanagementapi.model.AuthRequest;
-import com.example.hotelmanagementapi.model.UserEntity;
+import com.example.hotelmanagementapi.model.User;
 import com.example.hotelmanagementapi.model.payload.AuthResponse;
 import com.example.hotelmanagementapi.model.payload.UserDto;
 import com.example.hotelmanagementapi.repository.UserRepository;
@@ -15,11 +15,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Service
 @RequiredArgsConstructor
@@ -33,10 +30,10 @@ public class AuthenticationServiceImp implements AuthenticationService {
     public AuthResponse register(UserDto userDto) {
 
         boolean exists = userRepository.existsByEmail(userDto.getEmail());
-        UserEntity user;
+        User user;
 
         if (!exists) {
-            user = UserEntity
+            user = User
                     .builder()
                     .firstName(userDto.getFirstName())
                     .lastName(userDto.getLastName())

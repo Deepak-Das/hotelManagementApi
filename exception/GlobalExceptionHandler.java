@@ -46,6 +46,14 @@ public class GlobalExceptionHandler {
 
         return new  ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiResponse> responseNotFoundException(ResourceNotFoundException ex){
+        String msg=ex.getMessage();
+        ApiResponse apiResponse=new ApiResponse();
+        apiResponse.setMessage(msg);
+        apiResponse.setError_status("404 Not Found");
+        return new  ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
+    }
 
 
 }

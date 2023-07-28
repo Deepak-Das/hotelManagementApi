@@ -30,6 +30,8 @@ public class SecurityConfig {
                         authReq-> authReq
                                 .requestMatchers("/api/v1/auth/**")
                                 .permitAll()
+//                                .requestMatchers("/api/v1/auth/hotels")
+//                                .permitAll()
                                 .anyRequest()
                                 .authenticated()
                         ).sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

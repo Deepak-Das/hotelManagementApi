@@ -16,7 +16,7 @@ import lombok.*;
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long serviceId;//Todo:m-o booking;
+    private Long serviceId;
 
     private  String name;
     private  String description;

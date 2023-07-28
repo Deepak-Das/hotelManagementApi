@@ -1,10 +1,10 @@
 package com.example.hotelmanagementapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -16,11 +16,25 @@ import lombok.*;
 public class HostRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long hostRoomId;//Todo:m-o booking;
+    private Long hostRoomId;
 
-    //Todo: o-o room
-    //Todo: o-o booking
-    //Todo: o-m userId
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @ToString.Exclude
+    @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @JoinColumn(name = "room_id")
+    private Room room;
+
+
+
     //Todo: o-o adharcard no.
+    private String adharcardNo;
+
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
 
 }

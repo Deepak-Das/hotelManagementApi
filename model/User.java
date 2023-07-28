@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
@@ -22,11 +21,11 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class UserEntity implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long userId;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -39,9 +38,6 @@ public class UserEntity implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;//todo:need to change into list type
 
-    private Long brandId;
-
-
     @Column(nullable = true)
     private Long adharcard;
 
@@ -51,14 +47,19 @@ public class UserEntity implements UserDetails {
     @Column(nullable = true)
     private String hQualification;
 
-
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @ToString.Exclude
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "branch_id")
+    private BranchDetail branchDetail;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        UserEntity user = (UserEntity) o;
-        return id != null && Objects.equals(id, user.id);
+        User user = (User) o;
+        return userId != null && Objects.equals(userId, user.userId);
     }
 
     @Override

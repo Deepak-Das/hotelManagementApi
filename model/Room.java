@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class RoomDetail {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roomId;
@@ -44,4 +44,7 @@ public class RoomDetail {
 
     @ElementCollection
     private Set<String> images;
+
+
+
 }
