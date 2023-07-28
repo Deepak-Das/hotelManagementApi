@@ -5,6 +5,7 @@ import com.example.hotelmanagementapi.util.RoomType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Builder
@@ -46,5 +47,7 @@ public class Room {
     private Set<String> images;
 
 
+    @ManyToMany(mappedBy = "rooms")
+    private Set<Reservation> reservations = new LinkedHashSet<>();
 
 }
