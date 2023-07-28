@@ -47,11 +47,11 @@ public class User implements UserDetails {
     @Column(nullable = true)
     private String hQualification;
 
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
+//    @Getter(AccessLevel.NONE)
+//    @Setter(AccessLevel.NONE)
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "branch_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "branch_id",nullable = true)
     private Branch branchDetail;
 
     @Override
