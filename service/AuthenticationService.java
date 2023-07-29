@@ -1,4 +1,4 @@
-package com.example.hotelmanagementapi.service.serviceImp;
+package com.example.hotelmanagementapi.service;
 
 import com.example.hotelmanagementapi.model.AuthRequest;
 import com.example.hotelmanagementapi.model.payload.AuthResponse;

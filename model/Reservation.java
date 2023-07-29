@@ -2,6 +2,7 @@ package com.example.hotelmanagementapi.model;
 
 
 import com.example.hotelmanagementapi.util.ReservationStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -38,9 +39,10 @@ public class Reservation {
 
     private Boolean active;
 
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
-    @ToString.Exclude
+//    @Getter(AccessLevel.NONE)
+//    @Setter(AccessLevel.NONE)
+//    @ToString.Exclude
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private User user;
@@ -55,9 +57,10 @@ public class Reservation {
     private Payment payment;
 
 
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
-    @ToString.Exclude
+//    @Getter(AccessLevel.NONE)
+//    @Setter(AccessLevel.NONE)
+//    @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "branch_id")
     private Branch branchDetail;

@@ -1,4 +1,4 @@
-package com.example.hotelmanagementapi.service;
+package com.example.hotelmanagementapi.service.serviceImp;
 
 import com.example.hotelmanagementapi.exception.UserAlreadyExistException;
 import com.example.hotelmanagementapi.exception.UserNotExistException;
@@ -8,7 +8,7 @@ import com.example.hotelmanagementapi.model.payload.AuthResponse;
 import com.example.hotelmanagementapi.model.payload.UserDto;
 import com.example.hotelmanagementapi.repository.UserRepository;
 import com.example.hotelmanagementapi.security.JwtService;
-import com.example.hotelmanagementapi.service.serviceImp.AuthenticationService;
+import com.example.hotelmanagementapi.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

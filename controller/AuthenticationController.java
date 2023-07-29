@@ -3,7 +3,7 @@ package com.example.hotelmanagementapi.controller;
 import com.example.hotelmanagementapi.model.AuthRequest;
 import com.example.hotelmanagementapi.model.payload.AuthResponse;
 import com.example.hotelmanagementapi.model.payload.UserDto;
-import com.example.hotelmanagementapi.service.serviceImp.AuthenticationService;
+import com.example.hotelmanagementapi.service.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

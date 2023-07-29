@@ -42,4 +42,6 @@ public class Booking {
     @JoinColumn(name = "booking_id")
     private Set<Service> services = new LinkedHashSet<>();
 
+    //todo: o-o reservation
+
 }
