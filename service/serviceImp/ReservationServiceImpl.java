@@ -71,8 +71,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<ReservationDto> getReservationsByUsername(String username) {
-        User user = userRepository.findByUsername(username).orElse(null);
+    public List<ReservationDto> getReservationsByFirstNameAndLastName(String firstName, String lastName) {
+        User user = userRepository.findByFirstNameAndLastName(firstName, lastName).orElse(null);
         if (user != null) {
             List<Reservation> reservations = reservationRepository.findByUser(user);
             return reservations.stream()

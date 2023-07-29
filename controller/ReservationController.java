@@ -58,9 +58,10 @@ public class ReservationController {
         }
     }
 
-    @GetMapping("/username/{username}")
-    public ResponseEntity<List<ReservationDto>> getReservationsByUsername(@PathVariable String username) {
-        List<ReservationDto> reservations = reservationService.getReservationsByUsername(username);
+    @GetMapping("/username")
+    public ResponseEntity<List<ReservationDto>> getReservationsByUsername(@RequestParam("firstName") String firstName,
+                                                                          @RequestParam("lastName") String lastName) {
+        List<ReservationDto> reservations = reservationService.getReservationsByFirstNameAndLastName(firstName,  lastName);
         if (!reservations.isEmpty()) {
             return new ResponseEntity<>(reservations, HttpStatus.OK);
         } else {

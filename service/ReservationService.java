@@ -8,6 +8,6 @@ public interface ReservationService {
     ReservationDto saveReservation(ReservationDto reservationDto, Long userId, Long branchId);
     ReservationDto updateReservation(Long reservationId, ReservationDto reservationDto);
     ReservationDto getReservationById(Long reservationId);
-    List<ReservationDto> getReservationsByUsername(String username);
+    List<ReservationDto> getReservationsByFirstNameAndLastName(String firstName, String lastName);
     List<ReservationDto> getReservationsByRoomName(String roomName);
 }
