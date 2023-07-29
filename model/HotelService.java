@@ -1,9 +1,6 @@
 package com.example.hotelmanagementapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Builder
@@ -13,14 +10,18 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Service {
+public class HotelService {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long serviceId;
-
     private  String name;
     private  String description;
-    private  Integer count;
     private  Integer rate;
+
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+
+
 
 }

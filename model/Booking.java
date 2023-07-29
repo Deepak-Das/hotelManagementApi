@@ -35,13 +35,15 @@ public class Booking {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+    @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true, mappedBy = "booking")
+    private Set<BookingService> bookingServices = new LinkedHashSet<>();
+
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     @ToString.Exclude
-    @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
-    @JoinColumn(name = "booking_id")
-    private Set<Service> services = new LinkedHashSet<>();
-
-    //todo: o-o reservation
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
 
 }
